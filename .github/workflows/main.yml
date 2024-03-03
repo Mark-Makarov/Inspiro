@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  checkout:
+    runs-on: self-hosted
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+  prepare-environment:
+    runs-on: self-hosted
+    needs: checkout
+    steps:
+      - name: Stop and remove containers, networks
+        run: |
+          if docker ps -a | grep Inspiro ; then
+            docker rm -f Inspiro
+          else
+            echo "Container Inspiro does not exist"
+          fi
+  deploy:
+    runs-on: self-hosted
+    needs: prepare-environment
+    steps:
+      - name: docker-compose
+        run: docker-compose up --build -d

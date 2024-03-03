@@ -1,0 +1,15 @@
+version: '3'
+services:
+  server:
+    container_name: Inspiro
+    entrypoint: yarn start
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - '3457:3457'
