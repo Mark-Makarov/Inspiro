@@ -178,7 +178,7 @@ export type RenderCanvas = {
   activeObjectRef: any;
 };
 
-export type CursorChatProps = {
+export type ChatCursorProps = {
   cursor: { x: number; y: number };
   cursorState: CursorState;
   setCursorState: (cursorState: CursorState) => void;
