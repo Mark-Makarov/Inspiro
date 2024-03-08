@@ -4,20 +4,23 @@
 import {useCallback, useEffect, useState} from "react";
 
 // hooks
-import {useBroadcastEvent, useEventListener, useMyPresence, useOthers} from "@/liveblocks.config";
+import { useBroadcastEvent, useEventListener, useMyPresence, useOthers } from "@/liveblocks.config";
 import useInterval from "@/hooks/useInterval";
 
 // components
 import LiveCursors from "@/components/cursor/LiveCursors"
 import ChatCursor from "@/components/cursor/ChatCursor";
-
-// types
-import {CursorMode, CursorState, Reaction, ReactionEvent} from "@/types";
 import ReactionSelector from "@/components/reaction/ReactionButton";
 import FlyningReaction from "@/components/reaction/FlyningReaction";
 
+// types
+import { CursorMode, CursorState, Reaction, ReactionEvent } from "@/types";
 
-const Live = () => {
+type Props = {
+  canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
+}
+
+const Live = ({ canvasRef }: Props) => {
   const others = useOthers();
   const [{ cursor }, updateMyPresence] = useMyPresence() as any;
   const [cursorState, setCursorState] = useState<CursorState>({ mode: CursorMode.Hidden });
@@ -40,22 +43,19 @@ const Live = () => {
   }, []);
 
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
-    e.preventDefault();
-
     const x = e.clientX - e.currentTarget.getBoundingClientRect().x;
     const y = e.clientY - e.currentTarget.getBoundingClientRect().y;
 
     updateMyPresence({ cursor: { x, y } });
 
     setCursorState((state: CursorState) =>
-      cursorState.mode === CursorMode.Reaction ? {...state, isPressed: true} : state
+      cursorState.mode === CursorMode.Reaction ? { ...state, isPressed: true } : state
     );
   }, [cursorState.mode]);
 
   const handlePointerUp = useCallback((e: React.PointerEvent) => {
     setCursorState((state: CursorState) =>
-        // TODO isPressed: false
-        cursorState.mode === CursorMode.Reaction ? {...state, isPressed: true} : state
+      cursorState.mode === CursorMode.Reaction ? { ...state, isPressed: false } : state
     );
   }, [cursorState.mode]);
 
@@ -130,13 +130,15 @@ const Live = () => {
 
   return (
     <div
-        className="h-[100vh] w-full flex justify-center items-center text-center"
-        onPointerMove={handlePointerMove}
-        onPointerDown={handlePointerDown}
-        onPointerLeave={handlePointerLeave}
-        onPointerUp={handlePointerUp}
+      className="relative flex h-full w-full flex-1 items-center justify-center"
+      id="canvas"
+      style={{ cursor: cursorState.mode === CursorMode.Chat ? "none" : "auto" }}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={handlePointerLeave}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
     >
-      <h1 className="font-5xl text-white">Inspiro</h1>
+      <canvas ref={canvasRef} />
       {reactions.map(({ value, timestamp, point }) => (
         <FlyningReaction
             key={timestamp.toString()}

@@ -1,14 +1,16 @@
+// react/next.js
+import Image from "next/image";
+
 // styles
 import styles from "./Avatar.module.css";
 
-const Avatar = ({ src, name }: { src: string; name: string }) => {
+const Avatar = ({ name, otherStyles }: { name: string; otherStyles: string; }) => {
   return (
-      <div className={styles.avatar} data-tooltip={name}>
-        <img
-            alt="avatar"
-            src={src}
-            height={48}
-            width={48}
+      <div className={`${styles.avatar} ${otherStyles} h-9 w-9`} data-tooltip={name}>
+        <Image
+            alt={name}
+            src={`https://liveblocks.io/avatars/avatar-${Math.floor(Math.random() * 30)}.png`}
+            fill
             className={styles.avatar_picture}
         />
       </div>
