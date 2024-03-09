@@ -6,7 +6,7 @@ import { fabric } from "fabric";
 import { v4 as uuid4 } from "uuid";
 
 // utils
-import { createSpecificShape } from "./shapes";
+import { createSpecificShape } from "@/lib/shapes";
 
 // types
 import {
@@ -82,7 +82,7 @@ export const handleCanvasMouseDown = ({
   }
 };
 
-export const handleCanvaseMouseMove = ({
+export const handleCanvasMouseMove = ({
   options,
   canvas,
   isDrawing,

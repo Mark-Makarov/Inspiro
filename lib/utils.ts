@@ -1,6 +1,7 @@
 // libraries
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import jsPDF from "jspdf";
 
 const adjectives = [
   "Счастливый",
@@ -51,43 +52,43 @@ export const getShapeInfo = (shapeType: string) => {
     case "rect":
       return {
         icon: "/assets/rectangle.svg",
-        name: "Rectangle",
+        name: "Квадрат",
       };
 
     case "circle":
       return {
         icon: "/assets/circle.svg",
-        name: "Circle",
+        name: "Круг",
       };
 
     case "triangle":
       return {
         icon: "/assets/triangle.svg",
-        name: "Triangle",
+        name: "Треугольник",
       };
 
     case "line":
       return {
         icon: "/assets/line.svg",
-        name: "Line",
+        name: "Линия",
       };
 
     case "i-text":
       return {
         icon: "/assets/text.svg",
-        name: "Text",
+        name: "Текст",
       };
 
     case "image":
       return {
         icon: "/assets/image.svg",
-        name: "Image",
+        name: "Изображение",
       };
 
     case "freeform":
       return {
         icon: "/assets/freeform.svg",
-        name: "Free Drawing",
+        name: "Рисовать",
       };
 
     default:
@@ -98,3 +99,19 @@ export const getShapeInfo = (shapeType: string) => {
   }
 };
 
+export const exportToPdf = () => {
+  const canvas = document.querySelector("canvas");
+
+  if (!canvas) return;
+
+  const doc = new jsPDF({
+    orientation: "landscape",
+    unit: "px",
+    format: [canvas.width, canvas.height],
+  });
+
+  const data = canvas.toDataURL();
+  doc.addImage(data, "PNG", 0, 0, canvas.width, canvas.height);
+
+  doc.save("inspiro.pdf");
+};
