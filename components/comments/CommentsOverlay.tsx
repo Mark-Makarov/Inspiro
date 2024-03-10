@@ -3,7 +3,7 @@ import { useCallback, useRef } from "react";
 
 // libraries
 import { ThreadData } from "@liveblocks/client";
-import { ThreadMetadata, useEditThreadMetadata, useThreads, useUser } from "@/liveblocks.config";
+import { ThreadMetadata, useEditThreadMetadata, useThreads } from "@/liveblocks.config";
 
 // hooks
 import { useMaxZIndex } from "@/hooks/useMaxZIndex";
@@ -33,7 +33,6 @@ export const CommentsOverlay = () => {
 
 const OverlayThread = ({ thread, maxZIndex }: OverlayThreadProps) => {
   const editThreadMetadata = useEditThreadMetadata();
-  // const { isLoading } = useUser(thread.comments[0].userId);
   const threadRef = useRef<HTMLDivElement>(null);
 
   const handleIncreaseZIndex = useCallback(() => {
@@ -47,10 +46,6 @@ const OverlayThread = ({ thread, maxZIndex }: OverlayThreadProps) => {
       },
     });
   }, [thread, editThreadMetadata, maxZIndex]);
-
-  // if (isLoading) {
-  //   return null;
-  // }
 
   return (
     <div

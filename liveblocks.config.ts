@@ -13,6 +13,8 @@ const client = createClient({
 export type Presence = {
   cursor: { x: number, y: number } | null,
   message: string | null,
+  cursorColor?: string | null,
+  editingText?: boolean | null,
 };
 
 // Optionally, Storage represents the shared document that persists in the
@@ -38,9 +40,10 @@ type RoomEvent = ReactionEvent;
 // Optionally, when using Comments, ThreadMetadata represents metadata on
 // each thread. Can only contain booleans, strings, and numbers.
 export type ThreadMetadata = {
-  // resolved: boolean;
-  // quote: string;
-  // time: number;
+  zIndex: number,
+  x: number,
+  y: number,
+  resolved: boolean,
 };
 
 // Room-level hooks, use inside `RoomProvider`

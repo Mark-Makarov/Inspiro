@@ -19,7 +19,7 @@ import { Comments } from "@/components/comments/Comments";
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@/components/ui/context-menu";
 
 // types
-import { CursorMode, CursorState, Reaction, ReactionEvent } from "@/types";
+import { CursorMode, CursorState, Reaction } from "@/types";
 
 type Props = {
   canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
@@ -59,7 +59,7 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
     );
   }, [cursorState.mode]);
 
-  const handlePointerUp = useCallback((e: React.PointerEvent) => {
+  const handlePointerUp = useCallback(() => {
     setCursorState((state: CursorState) =>
       cursorState.mode === CursorMode.Reaction ? { ...state, isPressed: false } : state
     );

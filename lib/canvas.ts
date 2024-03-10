@@ -131,9 +131,9 @@ export const handleCanvasMouseMove = ({
         width: pointer.x - (shapeRef.current?.left || 0),
         height: pointer.y - (shapeRef.current?.top || 0),
       });
-
-    default:
       break;
+
+    default: break;
   }
 
   canvas.renderAll();

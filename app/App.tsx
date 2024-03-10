@@ -81,7 +81,7 @@ export default function Page() {
       return true
     }
 
-    for (const [key, value] of canvasObjects.entries()) {
+    for (const [key] of canvasObjects.entries()) {
       canvasObjects.delete(key);
     }
 
