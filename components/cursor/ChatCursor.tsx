@@ -21,6 +21,7 @@ updateMyPresence,
     if (e.key === "Enter") {
       setCursorState({
         mode: CursorMode.Chat,
+        // @ts-ignore
         previousMessage: cursorState.message,
         message: "",
       });
@@ -29,7 +30,6 @@ updateMyPresence,
     }
   };
 
-  // TODO
   return (
       <div
           className="absolute top-0 left-0"
