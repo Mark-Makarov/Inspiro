@@ -178,22 +178,26 @@ export const ALIGNMENT_OPTIONS = [
 export const SHORTCUTS = [
   {
     key: "1",
-    name: "Chat",
+    name: "Чат",
+    action: "Chat",
     shortcut: "/",
   },
   {
     key: "2",
-    name: "Undo",
-    shortcut: "⌘ + Z",
+    name: "Отменить",
+    action: "Undo",
+    shortcut: "⌘ Mac / ⊞ Win + Z",
   },
   {
     key: "3",
-    name: "Redo",
-    shortcut: "⌘ + Y",
+    name: "Вернуть",
+    action: "Redo",
+    shortcut: "⌘ Mac / ⊞ Win + Y",
   },
   {
     key: "4",
-    name: "Reactions",
+    name: "Реакции",
+    action: "Reactions",
     shortcut: "E",
   },
 ];

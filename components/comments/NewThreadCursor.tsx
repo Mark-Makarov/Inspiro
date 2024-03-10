@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 // libraries
 import * as Portal from "@radix-ui/react-portal";
 
-
 const NewThreadCursor = ({ display }: { display: boolean }) => {
   const [coords, setCoords] = useState({
     x: -10000,

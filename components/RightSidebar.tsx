@@ -12,6 +12,7 @@ import Export from "@/components/Export";
 
 // types
 import { RightSidebarProps } from "@/types";
+import { useRef } from "react";
 
 const RightSidebar = ({
 elementAttributes,
@@ -21,6 +22,9 @@ isEditingRef,
 activeObjectRef,
 syncShapeInStorage,
 }: RightSidebarProps) => {
+  const colorInputRef = useRef(null);
+  const strokeInputRef = useRef(null);
+
   const handleInputChange = (property: string, value: string) => {
     if (!isEditingRef.current) {
       isEditingRef.current = true;
@@ -50,10 +54,29 @@ syncShapeInStorage,
           handleInputChange={handleInputChange}
           isEditingRef={isEditingRef}
         />
-        <Text />
-        <Color />
-        <Color />
-        <Export />
+        <Text
+          fontFamily={elementAttributes.fontFamily}
+          fontSize={elementAttributes.fontSize}
+          fontWeight={elementAttributes.fontWeight}
+          handleInputChange={handleInputChange}
+        />
+        <Color
+          inputRef={colorInputRef}
+          attribute={elementAttributes.fill}
+          attributeType="fill"
+          placeholder="Цвет"
+          handleInputChange={handleInputChange}
+        />
+        <Color
+          inputRef={strokeInputRef}
+          attribute={elementAttributes.stroke}
+          attributeType="stroke"
+          placeholder="Обводка"
+          handleInputChange={handleInputChange}
+        />
+        <Export
+
+        />
       </section>
   );
 };

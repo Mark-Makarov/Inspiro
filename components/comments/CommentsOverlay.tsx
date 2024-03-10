@@ -1,5 +1,3 @@
-"use client";
-
 // react/next.js
 import { useCallback, useRef } from "react";
 
@@ -22,11 +20,11 @@ export const CommentsOverlay = () => {
   const { threads } = useThreads();
   const maxZIndex = useMaxZIndex();
 
+  const filteredThreads = threads.filter((thread) => !thread.metadata.resolved);
+
   return (
     <div>
-      {threads
-        .filter((thread) => !thread.metadata.resolved)
-        .map((thread) => (
+      {filteredThreads.map((thread) => (
           <OverlayThread key={thread.id} thread={thread} maxZIndex={maxZIndex} />
         ))}
     </div>
@@ -35,7 +33,7 @@ export const CommentsOverlay = () => {
 
 const OverlayThread = ({ thread, maxZIndex }: OverlayThreadProps) => {
   const editThreadMetadata = useEditThreadMetadata();
-  const { isLoading } = useUser(thread.comments[0].userId);
+  // const { isLoading } = useUser(thread.comments[0].userId);
   const threadRef = useRef<HTMLDivElement>(null);
 
   const handleIncreaseZIndex = useCallback(() => {
@@ -50,9 +48,9 @@ const OverlayThread = ({ thread, maxZIndex }: OverlayThreadProps) => {
     });
   }, [thread, editThreadMetadata, maxZIndex]);
 
-  if (isLoading) {
-    return null;
-  }
+  // if (isLoading) {
+  //   return null;
+  // }
 
   return (
     <div
