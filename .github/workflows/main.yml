@@ -25,8 +25,8 @@ jobs:
   deploy:
     runs-on: self-hosted
     needs: prepare-environment
-    env:
-      LIVEBLOCKS_API_KEY: ${{ secrets.LIVEBLOCKS_API_KEY }}
     steps:
+      - name: inject environments values
+        run: echo "LIVEBLOCKS_API_KEY=${{ secrets.LIVEBLOCKS_API_KEY }}" > .env.local
       - name: docker-compose
         run: docker-compose up --build -d
