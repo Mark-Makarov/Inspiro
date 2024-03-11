@@ -3,11 +3,19 @@
 // react/next.js
 import { useCallback, useEffect, useState } from "react";
 
+// libraries
+import {
+  useBroadcastEvent,
+  useEventListener,
+  useMyPresence,
+  useRedo,
+  useUndo,
+} from "@/liveblocks.config";
+
 // constants
 import { SHORTCUTS } from "@/constants";
 
 // hooks
-import { useBroadcastEvent, useEventListener, useMyPresence } from "@/liveblocks.config";
 import useInterval from "@/hooks/useInterval";
 
 // components
@@ -16,18 +24,23 @@ import ChatCursor from "@/components/cursor/ChatCursor";
 import ReactionSelector from "@/components/reaction/ReactionButton";
 import FlyningReaction from "@/components/reaction/FlyningReaction";
 import { Comments } from "@/components/comments/Comments";
-import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@/components/ui/context-menu";
+import {
+  ContextMenu,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu";
 
 // types
 import { CursorMode, CursorState, Reaction } from "@/types";
 
 type Props = {
   canvasRef: React.MutableRefObject<HTMLCanvasElement | null>;
-  undo: () => void;
-  redo: () => void;
 }
 
-const Live = ({ canvasRef, undo, redo }: Props) => {
+const Live = ({ canvasRef }: Props) => {
+  const redo = useRedo();
+  const undo = useUndo();
   const [{ cursor }, updateMyPresence] = useMyPresence();
   const [cursorState, setCursorState] = useState<CursorState>({ mode: CursorMode.Hidden });
   const [reactions, setReactions] = useState<Reaction[]>([]);
@@ -43,7 +56,7 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
     }
   }, []);
 
-  const handlePointerLeave = useCallback((e: React.PointerEvent) => {
+  const handlePointerLeave = useCallback(() => {
     setCursorState({ mode: CursorMode.Hidden });
     updateMyPresence({ cursor: null, message: null });
   }, []);

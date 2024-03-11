@@ -1,5 +1,3 @@
-"use client";
-
 // components
 import CursorSVG from "@/components/cursor/CursorSVG";
 

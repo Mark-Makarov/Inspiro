@@ -17,7 +17,7 @@ import { Slot } from "@radix-ui/react-slot";
 import * as Portal from "@radix-ui/react-portal";
 
 // hooks
-import { useMaxZIndex } from "@/hooks/useMaxZIndex";
+import useMaxZIndex from "@/hooks/useMaxZIndex";
 
 // components
 import PinnedComposer from "@/components/comments/PinnedComposer";

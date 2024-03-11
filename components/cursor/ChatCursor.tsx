@@ -1,6 +1,8 @@
+// components
+import CursorSVG from "@/components/cursor/CursorSVG";
+
 // types
 import { ChatCursorProps, CursorMode} from "@/types";
-import CursorSVG from "@/components/cursor/CursorSVG";
 
 const ChatCursor = ({
 cursor,

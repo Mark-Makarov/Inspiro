@@ -41,6 +41,16 @@ syncShapeInStorage,
     })
   };
 
+  const {
+    stroke,
+    height,
+    fill,
+    fontSize,
+    fontFamily,
+    width,
+    fontWeight,
+  } = elementAttributes;
+
   return (
       <section className="flex flex-col border-t border-primary-grey-200 bg-primary-black text-primary-grey-300
                     min-2-[227px] sticky left-0 h-full max-sm:hidden select-none overflow-y-auto pb-20">
@@ -49,34 +59,32 @@ syncShapeInStorage,
           Внесите изменения по вашему желанию!
         </span>
         <Dimensions
-          width={elementAttributes.width}
-          height={elementAttributes.height}
+          width={width}
+          height={height}
           handleInputChange={handleInputChange}
           isEditingRef={isEditingRef}
         />
         <Text
-          fontFamily={elementAttributes.fontFamily}
-          fontSize={elementAttributes.fontSize}
-          fontWeight={elementAttributes.fontWeight}
+          fontFamily={fontFamily}
+          fontSize={fontSize}
+          fontWeight={fontWeight}
           handleInputChange={handleInputChange}
         />
         <Color
           inputRef={colorInputRef}
-          attribute={elementAttributes.fill}
+          attribute={fill}
           attributeType="fill"
           placeholder="Цвет"
           handleInputChange={handleInputChange}
         />
         <Color
           inputRef={strokeInputRef}
-          attribute={elementAttributes.stroke}
+          attribute={stroke}
           attributeType="stroke"
           placeholder="Обводка"
           handleInputChange={handleInputChange}
         />
-        <Export
-
-        />
+        <Export />
       </section>
   );
 };

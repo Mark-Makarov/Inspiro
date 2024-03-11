@@ -1,9 +1,7 @@
-"use client";
-
 // react/next.js
 import Image from "next/image";
 
-// components
+// libraries
 import { Composer, ComposerProps } from "@liveblocks/react-comments";
 
 type Props = {
@@ -26,7 +24,7 @@ const PinnedComposer = ({ onComposerSubmit, ...props }: Props) => {
 
         <Composer
           onComposerSubmit={onComposerSubmit}
-          autoFocus={true}
+          autoFocus
           onKeyUp={e => e.stopPropagation()}
         />
       </div>

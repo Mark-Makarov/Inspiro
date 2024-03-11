@@ -1,13 +1,9 @@
-"use client";
-
 // react/next.js
 import Image from "next/image";
 import { memo } from "react";
 
 // constants
 import { NAV_ELEMENTS } from "@/constants";
-
-// hooks
 
 // components
 import ActiveUsers from "@/components/users/ActiveUsers";
@@ -26,7 +22,7 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
 
   return (
       <nav className="flex select-none items-center justify-between gap-4 bg-primary-black px-5 text-white">
-        <p>Inspiro</p>
+        <p className="font-bold text-2xl">Inspiro</p>
 
         <ul className="flex flex-row">
           {NAV_ELEMENTS.map((item: ActiveElement | any) => (

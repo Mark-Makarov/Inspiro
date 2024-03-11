@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 
 // components
-import {Room} from "@/app/Room";
+import { Room } from "@/app/Room";
 
 // styles
 import { Work_Sans } from "next/font/google";

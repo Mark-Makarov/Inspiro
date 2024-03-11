@@ -7,9 +7,6 @@ import { useOthers } from "@/liveblocks.config";
 // components
 import Cursor from '@/components/cursor';
 
-// types
-
-
 const LiveCursors = () => {
   const others = useOthers();
 

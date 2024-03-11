@@ -10,7 +10,8 @@ const Avatar = ({ name, otherStyles }: { name: string; otherStyles: string; }) =
         <Image
             alt={name}
             src={`https://liveblocks.io/avatars/avatar-${Math.floor(Math.random() * 30)}.png`}
-            fill
+            width={32}
+            height={32}
             className={styles.avatar_picture}
         />
       </div>
