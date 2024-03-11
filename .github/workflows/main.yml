@@ -9,7 +9,7 @@ jobs:
   checkout:
     runs-on: self-hosted
     steps:
-      - name: checkout repo
+      - name: Checkout repo
         uses: actions/checkout@v4
   prepare-environment:
     runs-on: self-hosted
@@ -25,10 +25,8 @@ jobs:
   deploy:
     runs-on: self-hosted
     needs: prepare-environment
+    env:
+      LIVEBLOCKS_API_KEY: ${{ secrets.LIVEBLOCKS_API_KEY }}
     steps:
-      - name: inject environments values
-        run: echo "LIVEBLOCKS_API_KEY=${{ secrets.LIVEBLOCKS_API_KEY }}" > .env.local
-      - name: Print .env.local content
-        run: cat .env.local
-      - name: docker-compose
+      - name: Build docker container
         run: docker-compose up --build -d
