@@ -28,8 +28,5 @@ jobs:
     env:
       LIVEBLOCKS_API_KEY: ${{ secrets.LIVEBLOCKS_API_KEY }}
     steps:
-      - run: |
-          touch .env.local
-          echo LIVEBLOCKS_API_KEY=${{ secrets.LIVEBLOCKS_API_KEY }} >> .env.local
       - name: Build docker container
         run: docker-compose up --build -d
