@@ -32,7 +32,6 @@ const ShapesMenu = ({
             />
           </Button>
         </DropdownMenuTrigger>
-
         <DropdownMenuContent className="mt-5 flex flex-col gap-y-1 border-none bg-primary-black py-4 text-white">
           {item.value.map((elem) => (
             <Button
@@ -64,7 +63,6 @@ const ShapesMenu = ({
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
-
       <input
         type="file"
         className="hidden"
