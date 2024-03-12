@@ -7,7 +7,7 @@ RUN yarn install --immutable
 
 FROM node:20
 WORKDIR /app/
-COPY                package.json yarn.lock  ./
+COPY package.json yarn.lock  ./
 COPY --from=builder /app/node_modules/ ./node_modules/
 COPY . .
 
