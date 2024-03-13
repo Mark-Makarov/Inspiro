@@ -12,6 +12,7 @@ COPY --from=builder /app/node_modules/ ./node_modules/
 COPY . .
 
 EXPOSE 3457
+
 ENV NODE_ENV production
 ENV PORT 3457
 ARG LIVEBLOCKS_API_KEY
