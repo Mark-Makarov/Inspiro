@@ -7,6 +7,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - LIVEBLOCKS_API_KEY=${LIVEBLOCKS_API_KEY}
+        - LIVEBLOCKS=${LIVEBLOCKS}
     volumes:
       - ./:/app
       - /app/node_modules
