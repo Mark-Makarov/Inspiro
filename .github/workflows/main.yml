@@ -30,4 +30,4 @@ jobs:
       LIVEBLOCKS: test_Q28tLdka2BM
     steps:
       - name: docker-compose
-        run: docker-compose up --build -d $LIVEBLOCKS_API_KEY $LIVEBLOCKS
+        run: docker-compose up --build -d --build-arg LIVEBLOCKS_API_KEY=${LIVEBLOCKS_API_KEY} LIVEBLOCKS=${LIVEBLOCKS}
