@@ -14,5 +14,5 @@ services:
     ports:
       - '3457:3457'
     environment:
-      - LIVEBLOCKS_API_KEY=$LIVEBLOCKS_API_KEY
+      - LIVEBLOCKS_API_KEY=${LIVEBLOCKS_API_KEY}
 
