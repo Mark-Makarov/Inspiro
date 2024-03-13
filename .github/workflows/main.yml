@@ -27,6 +27,7 @@ jobs:
     needs: prepare-environment
     env:
       LIVEBLOCKS_API_KEY: ${{ secrets.LIVEBLOCKS_API_KEY }}
+      LIVEBLOCKS: test_Q28tLdka2BM
     steps:
       - name: docker-compose
         run: docker-compose up --build -d
