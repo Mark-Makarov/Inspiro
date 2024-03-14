@@ -3,7 +3,6 @@ import { createRoomContext, createLiveblocksContext } from "@liveblocks/react";
 import { ReactionEvent } from "@/types";
 
 const client = createClient({
-  throttle: 16,
   publicApiKey: process.env.LIVEBLOCKS_API_KEY!,
 });
 
