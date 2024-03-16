@@ -18,11 +18,7 @@ export const metadata: Metadata = {
   title: "Inspiro",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="ru">
       <body className={`${workSans.className} bg-primary-grey-200`}>

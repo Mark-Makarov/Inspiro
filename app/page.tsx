@@ -1,6 +1,11 @@
+"use client";
+
 // react/next.js
 import dynamic from "next/dynamic";
 
-const App = dynamic(() => import("./App"), { ssr: false, });
+// components
+import Loader from "@/components/Loader";
+
+const App = dynamic(() => import("./App"), { ssr: false, loading: () => <Loader />, });
 
 export default App;

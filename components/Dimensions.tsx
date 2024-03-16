@@ -22,7 +22,7 @@ const Dimensions = ({ width, height, isEditingRef, handleInputChange }: Props) =
           key={item.label}
           className="flex flex-1 items-center gap-3 rounded-sm"
         >
-          <Label htmlFor={item.property} className="text-[10px] font-bold">
+          <Label htmlFor={item.property} className="text-sm font-bold">
             {item.label}
           </Label>
           <Input

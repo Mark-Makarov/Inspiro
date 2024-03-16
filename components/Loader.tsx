@@ -1,5 +1,5 @@
 // libraries
-import { GridLoader } from "react-spinners"
+import { GridLoader } from "react-spinners";
 
 const Loader = () => (
   <div className='flex h-screen w-screen flex-col items-center justify-center gap-2'>

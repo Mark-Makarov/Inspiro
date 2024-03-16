@@ -20,6 +20,11 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
       (activeElement && activeElement.value === value) ||
       (Array.isArray(value) && value.some((val) => val?.value === activeElement?.value));
 
+  const navbarClickHandler = (item: ActiveElement) => {
+    if (Array.isArray(item?.value)) return;
+    handleActiveElement(item);
+  };
+
   return (
       <nav className="flex select-none items-center justify-between gap-4 bg-primary-black px-5 text-white">
         <p className="font-bold text-2xl">Inspiro</p>
@@ -28,13 +33,9 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
           {NAV_ELEMENTS.map((item: ActiveElement | any) => (
               <li
                   key={item.name}
-                  onClick={() => {
-                    if (Array.isArray(item.value)) return;
-                    handleActiveElement(item);
-                  }}
+                  onClick={() => navbarClickHandler(item)}
                   className={`group px-2.5 py-5 flex justify-center items-center
-            ${isActive(item.value) ? "bg-primary-green" : "hover:bg-primary-grey-200"}
-            `}
+            ${isActive(item.value) ? "bg-primary-green" : "hover:bg-primary-grey-200"}`}
               >
                 {Array.isArray(item.value) ? (
                     <ShapesMenu
@@ -68,7 +69,6 @@ const Navbar = ({ activeElement, imageInputRef, handleImageUpload, handleActiveE
               </li>
           ))}
         </ul>
-
         <ActiveUsers />
       </nav>
   );

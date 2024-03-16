@@ -10,22 +10,20 @@ import { LiveMap } from "@liveblocks/client";
 // components
 import Loader from "@/components/Loader";
 
-// types
-import { ReactNode } from "react";
-
-export function Room({ children }: { children: ReactNode }) {
+export function Room({ children }: { children: React.ReactNode }) {
   const initialPresence = {
     cursor: null,
     cursorColor: null,
     editingText: null,
     message: null,
   };
+  const initialStorage = { canvasObjects: new LiveMap()};
 
     return (
         <RoomProvider
           id="my-room"
           initialPresence={initialPresence}
-          initialStorage={{ canvasObjects: new LiveMap()}}
+          initialStorage={initialStorage}
         >
             <ClientSideSuspense fallback={<Loader/>}>
                 {() => children}

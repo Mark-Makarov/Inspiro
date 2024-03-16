@@ -53,11 +53,8 @@ syncShapeInStorage,
 
   return (
       <section className="flex flex-col border-t border-primary-grey-200 bg-primary-black text-primary-grey-300
-                    min-2-[227px] sticky left-0 h-full max-sm:hidden select-none overflow-y-auto pb-20">
+                          min-2-[227px] sticky left-0 h-full max-sm:hidden select-none overflow-y-auto pb-20">
         <h3 className="px-5 pt-4 text-sx uppercase">Дизайн</h3>
-        <span className="text-xs text-primary-grey-300 mt-3 px-5 border-b border-primary-grey-200 pb-4">
-          Внесите изменения по вашему желанию!
-        </span>
         <Dimensions
           width={width}
           height={height}

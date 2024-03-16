@@ -24,18 +24,12 @@ const NewThreadCursor = ({ display }: { display: boolean }) => {
           e.clientY < canvasRect.top ||
           e.clientY > canvasRect.bottom
         ) {
-          setCoords({
-            x: -10000,
-            y: -10000,
-          });
+          setCoords({ x: -10000, y: -10000 });
           return;
         }
       }
 
-      setCoords({
-        x: e.clientX,
-        y: e.clientY,
-      });
+      setCoords({ x: e.clientX, y: e.clientY });
     };
 
     document.addEventListener("mousemove", updatePosition, false);
@@ -62,10 +56,9 @@ const NewThreadCursor = ({ display }: { display: boolean }) => {
   return (
     <Portal.Root>
       <div
-        className="pointer-events-none fixed left-0 top-0 h-9 w-9 cursor-grab select-none rounded-bl-full rounded-br-full rounded-tl-md rounded-tr-full bg-white shadow-2xl"
-        style={{
-          transform: `translate(${coords.x}px, ${coords.y}px)`,
-        }}
+        className="pointer-events-none fixed left-0 top-0 h-9 w-9 cursor-grab select-none
+                   rounded-bl-full rounded-br-full rounded-tl-md rounded-tr-full bg-white shadow-2xl"
+        style={{ transform: `translate(${coords.x}px, ${coords.y}px)`, }}
       />
     </Portal.Root>
   );

@@ -50,7 +50,7 @@ export const PinnedThread = ({ thread, onFocus, ...props }: Props) => {
             className="rounded-full"
           />
         </div>
-        {!minimized ? (
+        {!minimized && (
           <div className="flex min-w-60 flex-col overflow-hidden rounded-lg bg-white text-sm shadow">
             <Thread
               thread={thread}
@@ -58,7 +58,7 @@ export const PinnedThread = ({ thread, onFocus, ...props }: Props) => {
               onKeyUp={e => e.stopPropagation()}
             />
           </div>
-        ) : null}
+        )}
       </div>
     ),
     [thread.comments.length, minimized]

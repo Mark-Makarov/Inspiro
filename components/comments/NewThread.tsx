@@ -30,9 +30,10 @@ type Props = {
 };
 
 export const NewThread = ({ children }: Props) => {
-  const [creatingCommentState, setCreatingCommentState] = useState<
-    "placing" | "placed" | "complete"
-  >("complete");
+  const [
+    creatingCommentState,
+    setCreatingCommentState,
+  ] = useState<"placing" | "placed" | "complete">("complete");
   const createThread = useCreateThread();
   const maxZIndex = useMaxZIndex();
   const [composerCoords, setComposerCoords] = useState<ComposerCoords>(null);
